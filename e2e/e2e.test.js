@@ -22,6 +22,18 @@ describe('Endpoints', () => {
     created_url = res.body.short_url.toString();
   })
 
+  it('POST the same URL - should receive the same body', async () => {
+    const res = await request(app)
+      .post('/api/shorturl')
+      .set('Content-type', 'application/json')
+      .send({'url':'https://www.google.com/'})
+    expect(res.statusCode).toEqual(201)
+    expect(res.body).toHaveProperty("original_url")
+    expect(res.body).toHaveProperty("short_url")
+    expect(res.body.original_url).toBe('https://www.google.com/')
+    expect(res.body.short_url.toString()).toBe(created_url)
+  })
+
   it('POST invalid URL', async () => {
     const res = await request(app)
       .post('/api/shorturl')
