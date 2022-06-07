@@ -4,8 +4,9 @@
   "description": "API project for freeCodeCamp",
   "main": "index.js",
   "scripts": {
+    "prestart": "npx knex migrate:latest --env production",
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "npx knex migrate:latest --env development && nodemon index.js"
   },
   "dependencies": {
     "body-parser": "^1.20.0",
