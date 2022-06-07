@@ -6,7 +6,8 @@
   "scripts": {
     "prestart": "npx knex migrate:latest --env production",
     "start": "node index.js",
-    "dev": "npx knex migrate:latest --env development && nodemon --inspect index.js"
+    "dev": "npx knex migrate:latest --env development && nodemon --inspect index.js",
+		"test": "jest --testTimeout=10000"
   },
   "dependencies": {
     "body-parser": "^1.20.0",
