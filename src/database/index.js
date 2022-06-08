@@ -1,6 +1,6 @@
-const db_enviroments = require('../../knexfile')
+const {development,production} = require('../../knexfile')
 
-const credentials = process.env.NODE_ENV && process.env.NODE_ENV === 'development' ? db_enviroments.development : db_enviroments.production
+const credentials = process.env.NODE_ENV && process.env.NODE_ENV === 'production' ? production : development
 
 const pg = require('knex')(credentials)
 
