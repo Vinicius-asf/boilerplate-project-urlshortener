@@ -23,7 +23,7 @@ class ShortUrlRepository{
 
   async get (id) {
     try {
-      const searchResponse = await this.connection('url').select('url').where({id});first();
+      const searchResponse = await this.connection('url').select('url').where({id}).first();
       return searchResponse.url;
     } catch (error) {
       throw new DatabaseError("Cannot find data with id "+id.toString())
@@ -31,4 +31,4 @@ class ShortUrlRepository{
   }
 }
 
-module.exports = ShortUrlRepository
+module.exports = new ShortUrlRepository()
