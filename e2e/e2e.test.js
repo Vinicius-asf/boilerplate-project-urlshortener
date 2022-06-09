@@ -53,7 +53,7 @@ describe('Endpoints', () => {
       .get('/api/shorturl/-1')
     expect(res.statusCode).toEqual(400)
     expect(res.body).toHaveProperty("error")
-    expect(res.body.error).toBe('invalid url')
+    expect(res.body.error).toBe('Wrong format')
   })
 
   it('invalid instruction', async () => {
