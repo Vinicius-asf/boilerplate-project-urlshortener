@@ -47,7 +47,7 @@ describe('Endpoints', () => {
   it('GET valid shortened url', async () => {
     const res = await request(app)
       .get('/api/shorturl/'+created_url)
-    expect(res.statusCode).toEqual(301)
+    expect(res.statusCode).toEqual(302)
   })
 
   it('GET invalid shortened url', async () => {
