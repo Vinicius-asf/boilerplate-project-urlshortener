@@ -2,8 +2,6 @@ const { agent } = require('supertest')
 const request = require('supertest')
 const createServer = require('../server')
 
-const pg = require('../src/database')
-
 const app = createServer()
 
 let created_url = ''
@@ -12,7 +10,7 @@ describe('Endpoints', () => {
   it('POST valid URL', async () => {
     const res = await request(app)
       .post('/api/shorturl')
-      .set('Content-type', 'application/json')
+      .set('Content-type', 'application/json; charset=utf-8')
       .send({'url':'https://www.google.com/'})
     expect(res.statusCode).toEqual(201)
     expect(res.body).toHaveProperty("original_url")
@@ -25,7 +23,7 @@ describe('Endpoints', () => {
   it('POST the same URL - should receive the same body', async () => {
     const res = await request(app)
       .post('/api/shorturl')
-      .set('Content-type', 'application/json')
+      .set('Content-type', 'application/json; charset=utf-8')
       .send({'url':'https://www.google.com/'})
     expect(res.statusCode).toEqual(201)
     expect(res.body).toHaveProperty("original_url")
@@ -37,7 +35,7 @@ describe('Endpoints', () => {
   it('POST invalid URL', async () => {
     const res = await request(app)
       .post('/api/shorturl')
-      .set('Content-type', 'application/json')
+      .set('Content-type', 'application/json; charset=utf-8')
       .send({'url':'https://w.google.com/'})
     expect(res.statusCode).toEqual(400)
     expect(res.body).toHaveProperty("error")
