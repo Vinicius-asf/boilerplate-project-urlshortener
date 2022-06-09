@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-// const shorturlRouter = require('./shorturl') - uncomment after module done
+const shorturlRouter = require('./shorturl')
 
 // middleware that is specific to this router
 router.use((req, res, next) => {
@@ -9,6 +9,6 @@ router.use((req, res, next) => {
   next()
 })
 
-// router.use("/shorturl",shorturlRouter) - uncomment after module done
+router.use("/shorturl",shorturlRouter)
 
 module.exports = router
