@@ -9,7 +9,10 @@ module.exports = {
 
   development: {
     client: 'pg',
-    connection: process.env.PG_DEV_CONNECTION_STRING,
+    connection: {
+      connectionString: process.env.PG_DEV_CONNECTION_STRING,
+      ssl:'no-verify'
+    },
     searchPath: ['dev'],
     pool: {
       min: 2,
@@ -22,7 +25,10 @@ module.exports = {
 
   production: {
     client: 'pg',
-    connection: process.env.PG_CONNECTION_STRING,
+    connection: {
+      connectionString: process.env.DATABASE_URL,
+      ssl:'no-verify'
+    },
     searchPath: ['public'],
     pool: {
       min: 2,
